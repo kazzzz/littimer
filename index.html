@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+  <title>LTタイマーHTML5</title>
+  <meta charset="utf-8" />
+  <script type="text/JavaScript">
+<!--
+function setTime() {
+  var nowTime = new Date();
+  nowSec = nowTime.getSeconds();
+  nowMin = nowTime.getMinutes();
+  nowHour = nowTime.getHours();
+  document.getElementById('sec').innerHTML = nowSec;
+  document.getElementById('min').innerHTML = nowMin;
+  document.getElementById('hour').innerHTML = nowHour;
+}
+
+function loop() {
+  startTime = new Date();
+  ltLength = 300;
+  setInterval("setRemain()", 1000);
+  setInterval("setTime()", 1000);
+}
+
+function setRemain() {
+  var currentTime = new Date();
+  elapsed = Math.round((currentTime - startTime) / 1000);
+  remain = ltLength - elapsed;
+  min = "00";
+  sec = "00";
+  convertSec(remain);
+  document.getElementById('rem_test').innerHTML = min + ':'+ sec;
+  
+}
+
+function convertSec(arg) {
+  min = Math.floor(arg / 60);
+  sec = Math.floor(arg % 60);
+  if (min < 10) {
+    min = "0" + min;
+  }
+  if (sec < 10) {
+    sec = "0" + sec;
+  }
+}
+
+//-->
+</script>
+
+</head>
+<body onload="loop()">
+
+<p>
+<span id="hour"></span>時
+<span id="min"></span>分
+<span id="sec"></span>秒
+</p>
+
+<p>
+残り時間：
+<span id="rem_test">05:00</span>
+</p>
+
+</body>
+</html>
