@@ -1,17 +1,26 @@
 var timerId;
 $(function() {
+
   // タイマー開始ボタンの動作
   $("#start_timer").click(function(){
     if (timerId != null) {
       clearInterval(timerId);
     }
     var ltLength = $("#lt_length").val();
+
     if (ltLength == null || ltLength == "") {
       ltLength = 300;
     }
-    $("#bar").css("top","0%");
-    $("#bar").css("height","100%");
+
+    if (ltLength == 0 || isNaN(ltLength)) {
+      alert("0より大きい整数を入力してください");
+      return;
+    }
+
+
+    renderBar(0);
     renderTime(ltLength);
+
     var startTime = new Date();
     timerId = setInterval(
       function() {
@@ -19,8 +28,7 @@ $(function() {
         var elapsed = Math.round((currentTime - startTime) / 1000);
         var remain = ltLength - elapsed;
         var rate = elapsed / ltLength * 100;
-        $("#bar").css("top",rate + "%");
-        $("#bar").css("height",(100 - rate) + "%");
+        renderBar(rate);
         renderTime(remain);
         if (remain == 0) {
           timeup();
@@ -52,5 +60,10 @@ function renderTime(len) {
 function timeup() {
   clearInterval(timerId);
   $("#rem_test").html("終了！");
+}
+
+function renderBar(rate) {
+  $("#bar").css("top",rate + "%");
+  $("#bar").css("height",(100 - rate) + "%");
 }
 
