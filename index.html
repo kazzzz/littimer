@@ -3,64 +3,22 @@
 <head>
   <title>LTタイマーHTML5</title>
   <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-  <script type="text/JavaScript">
-<!--
-var timerId;
-$(function() {
-  $("#start_timer").click(function(){
-    if (timerId != null) {
-      clearInterval(timerId);
-    }
-    var ltLength = $("#lt_length").val();
-    if (ltLength == null || ltLength == "") {
-      ltLength = 300;
-    }
-    convertSec(ltLength);
-    var startTime = new Date();
-    timerId = setInterval(
-      function() {
-        var currentTime = new Date();
-        var elapsed = Math.round((currentTime - startTime) / 1000);
-        var remain = ltLength - elapsed;
-        convertSec(remain);
-        if (remain == 0) {
-          timeup();
-        }
-      },1000);
-  })
-})
-
-function convertSec(arg) {
-  var min = Math.floor(arg / 60);
-  var sec = Math.floor(arg % 60);
-  if (min < 10) {
-    min = "0" + min;
-  }
-  if (sec < 10) {
-    sec = "0" + sec;
-  }
-  $("#rem_test").html(min + ':'+ sec);
-}
-
-function timeup() {
-  clearInterval(timerId);
-  $("#rem_test").html("終了！");
-}
-
-
-//-->
-</script>
-
+  <script type="text/javascript" src="js/lttimer.js"></script>
 </head>
 <body>
-
-<input type="text" id="lt_length" />
-<input type="button"  value="タイマー開始" id="start_timer" />
-
-<p>
-<span id="rem_test">05:00</span>
-</p>
-
+  <div id="form">
+    LT時間（秒）<input type="text" id="lt_length" />
+    <input type="button"  value="START" id="start_timer" />
+    <input type="button"  value="STOP" id="stop_timer" />
+  </div>
+  <div id="time">
+    <p>
+      <span id="rem_test">05:00</span>
+    </p>
+  </div>
+  <div id="bar"></div>
+  <div id="space"></div>
 </body>
 </html>

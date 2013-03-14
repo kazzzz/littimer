@@ -1,0 +1,39 @@
+body{
+	margin: 0px;
+	padding: 0px;
+        color: #000000;
+}
+
+div{
+       position: absolute
+}
+
+#form{
+        top: 0%;
+        z-index: 4;
+}
+
+#time{
+        top: 0%;
+        left: 0%;
+        font-size:100pt;
+        z-index: 3;
+}
+
+#bar{
+        top: 0%;
+        left: 0%;
+        z-index: 2;
+        background-color: #00FF00;
+        height: 100%;
+        width: 100%;
+}
+
+#space{
+        top: 0%;
+        left: 0%;
+        z-index: 1;
+       background-color: #FFFFFF;
+        height: 100%;
+        width: 100%;
+}
